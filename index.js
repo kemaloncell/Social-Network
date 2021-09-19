@@ -18,15 +18,8 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan('common'));
 
-app.use('/api/users', userRouter);
+app.use('/api/users', userRouter); //the type of path you want to appear in the url
 app.use('/api/auth', authRouter);
-
-userRouter.get('/', (req, res) => {
-  res.send('hey its user route');
-});
-authRouter.get('/', (req, res) => {
-  res.send('hey its auth route');
-});
 
 const port = 3000;
 app.listen(port, () => {
