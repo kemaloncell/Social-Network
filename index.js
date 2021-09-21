@@ -9,7 +9,7 @@ const authRouter = require('./routes/auth');
 const app = express();
 dotenv.config();
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, () => {
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology:true }, () => {
   console.log('Connected to MongoDB');
 });
 
@@ -21,7 +21,7 @@ app.use(morgan('common'));
 app.use('/api/users', userRouter); //the type of path you want to appear in the url
 app.use('/api/auth', authRouter);
 
-const port = 3000;
-app.listen(port, () => {
+const port = 7000;
+ app.listen(port, () => {
   console.log(`port ${port} is running!`);
 });
